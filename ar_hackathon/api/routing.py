@@ -6,7 +6,7 @@ Students will implement the route_package function in this module.
 
 *****IMPORTANT*****
 Team name: ALGOWIZ
-Email address: divij.kapoor@ubc.ca, me@aghadia.com, jinih0902@gmail.com
+Email address: divij.kapoor@ubc.ca, me@aghadia.com, jinoh0902@gmail.com
 *******************
 """
 
