@@ -13,6 +13,8 @@ Email address:
 from typing import Optional
 from ar_hackathon.models.game_state import GameState
 from ar_hackathon.models.package import Package
+from collections import deque
+from typing import Optional, List, Dict, Set
 
 def route_package(state: GameState, package: Package) -> Optional[str]:
     """
@@ -29,4 +31,33 @@ def route_package(state: GameState, package: Package) -> Optional[str]:
         next_fc_id: ID of the next FC to route the package to, or None to stay at current FC
     """
     # Student implementation here
-    pass
+    start = package.current_fc
+    goal = package.destination_fc
+    
+    queue = deque()
+    visited: Set[str] = set()
+    parent: Dict[str, Optional[str]] = {}
+
+    queue.append(start)
+    visited.add(start)
+    parent[start] = None
+
+    while queue:
+        current = queue.popleft()
+        if current == goal:
+            break
+        for fc in state.fulfillment_centers:
+            neighbor = fc.id
+            if neighbor not in visited and state.get_connection(current, neighbor):
+                queue.append(neighbor)
+                visited.add(neighbor)
+                parent[neighbor] = current
+
+    if goal not in parent:
+        return None
+
+    # Trace back to find the next hop
+    current = goal
+    while parent[current] != start:
+        current = parent[current]
+    return current
