@@ -5,8 +5,8 @@ This module defines the routing API for the Amazon Robotics Hackathon.
 Students will implement the route_package function in this module.
 
 *****IMPORTANT*****
-Team name:
-Email address: divij.kapoor@ubc.ca
+Team name: ALGOWIZ
+Email address: divij.kapoor@ubc.ca, me@aghadia.com, jinih0902@gmail.com
 *******************
 """
 
